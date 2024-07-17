@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create/Update Task</title>
+</head>
+<body>
+    <h1>{% if task.pk %}Update{% else %}Create{% endif %} Task</h1>
+    <form method="post">
+        {% csrf_token %}
+              {{ form.as_p }}
+        <button type="submit">{% if task.pk %}Update{% else %}Create{% endif %} Task</button>
+    </form>
+    <a href="{% url 'task_list' %}">Back to all tasks</a>
+</body>
+</html>
+

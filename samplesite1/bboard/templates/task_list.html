@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Tasks</title>
+</head>
+<body>
+    <h1>Your Tasks</h1>
+    <form method="get">
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date">
+        <button type="submit">Filter</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <a href="{% url 'task_detail' task.pk %}">{{ task.title }}</a>
+                - Created at: {{ task.created_at }}
+                {% if task.completed %}
+                    - Completed
+                {% else %}
+                    - Not Completed
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'task_create' %}">Create New Task</a>
+</body>
+</html>
+
+
+
